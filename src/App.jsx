@@ -75,12 +75,18 @@ function App() {
           Submit
         </Button>
       </Box>
-
-      <Box
-        sx={{ maxHeight: '100px', maxWidth: '200px' }}
-      >
-        <Comparison />
-      </Box>
+      {showImages && (
+        <Box
+          sx={{ maxHeight: '100px', maxWidth: '200px' }}
+        >
+          <Comparison
+            userLon={userLon}
+            userLat={userLat}
+            userFirstDate={userFirstDate}
+            userLastDate={userLastDate}
+          />
+        </Box>
+      )}
     </>
   )
 }
