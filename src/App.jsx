@@ -4,7 +4,7 @@ import Comparison from './components/Comparison'
 import { TextField } from '@mui/material'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 
 const theme = createTheme({
@@ -24,34 +24,26 @@ const theme = createTheme({
   },
 });
 
-
-
-
 function App() {
 
   const [userLon, setUserLon] = React.useState(0)
   const [userLat, setUserLat] = React.useState(0)
-  const [userFirstDate, setUserFirstDate] = React.useState(0)
-  const [userLastDate, setUserLastDate] = React.useState(0)
+  const [userStartDate, setUserStartDate] = React.useState("")
+  const [userLastDate, setUserLastDate] = React.useState("")
   const [showImages, setShowImages] = React.useState(false)
-
 
   const handleButton = (event) => {
     event.preventDefault();
     const lon = document.getElementById('longitude').value;
     const lat = document.getElementById('latitude').value;
-    const firstDate = document.getElementById('first-date').value;
-    const lastDate = document.getElementById('last-date').value;
+    const startDate = document.getElementById('firstDate').value;
+    const lastDate = document.getElementById('lastDate').value;
     setUserLon(lon);
     setUserLat(lat);
-    setUserFirstDate(firstDate);
+    setUserStartDate(startDate);
     setUserLastDate(lastDate);
     setShowImages(true);
-
-
-
   }
-
 
   return (
     <>
@@ -64,8 +56,8 @@ function App() {
       >
         <TextField id="longitude" label="Longitude" variant="outlined" />
         <TextField id="latitude" label="Latitude" variant="outlined" />
-        <TextField id="first-date" label="First Date" variant="outlined" />
-        <TextField id="last-date" label="Last Date" variant="outlined" />
+        <TextField id="firstDate" label="First Date" variant="outlined" />
+        <TextField id="lastDate" label="Last Date" variant="outlined" />
         <Button
           size="large"
           color='primary'
@@ -77,12 +69,12 @@ function App() {
       </Box>
       {showImages && (
         <Box
-          sx={{ maxHeight: '100px', maxWidth: '200px' }}
+          sx={{ maxWidth: '800px' }}
         >
           <Comparison
             userLon={userLon}
             userLat={userLat}
-            userFirstDate={userFirstDate}
+            userStartDate={userStartDate}
             userLastDate={userLastDate}
           />
         </Box>
