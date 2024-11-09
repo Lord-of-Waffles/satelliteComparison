@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ResponsiveAppBar from './components/ResponsiveAppBar'
 import Comparison from './components/Comparison'
+import LoadCircle from './components/LoadCircle'
 import { TextField } from '@mui/material'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -31,6 +32,7 @@ function App() {
   const [userStartDate, setUserStartDate] = React.useState("")
   const [userLastDate, setUserLastDate] = React.useState("")
   const [showImages, setShowImages] = React.useState(false)
+  const [showCircle, setShowCircle] = React.useState(false)
 
   const handleButton = (event) => {
     event.preventDefault();

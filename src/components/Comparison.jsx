@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 
+
 const Comparison = (props) => {
     const { userLon, userLat, userStartDate, userLastDate } = props; // use `userFirstDate` instead of `userStartDate`
 
@@ -34,6 +35,7 @@ const Comparison = (props) => {
 
 
     return (
+
         <ReactCompareSlider
             itemOne={<ReactCompareSliderImage src={images.imageOne} alt="Image one" />}
             itemTwo={<ReactCompareSliderImage src={images.imageTwo} alt="Image two" />}
