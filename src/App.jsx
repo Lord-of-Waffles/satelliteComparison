@@ -24,12 +24,34 @@ const theme = createTheme({
   },
 });
 
+
+
+
 function App() {
 
   const [userLon, setUserLon] = React.useState(0)
   const [userLat, setUserLat] = React.useState(0)
   const [userFirstDate, setUserFirstDate] = React.useState(0)
   const [userLastDate, setUserLastDate] = React.useState(0)
+  const [showImages, setShowImages] = React.useState(false)
+
+
+  const handleButton = (event) => {
+    event.preventDefault();
+    const lon = document.getElementById('longitude').value;
+    const lat = document.getElementById('latitude').value;
+    const firstDate = document.getElementById('first-date').value;
+    const lastDate = document.getElementById('last-date').value;
+    setUserLon(lon);
+    setUserLat(lat);
+    setUserFirstDate(firstDate);
+    setUserLastDate(lastDate);
+    setShowImages(true);
+
+
+
+  }
+
 
   return (
     <>
@@ -40,15 +62,16 @@ function App() {
         noValidate
         autoComplete="off"
       >
-        <TextField id="outlined-basic" label="Longitude" variant="outlined" />
-        <TextField id="outlined-basic" label="Latitude" variant="outlined" />
-        <TextField id="outlined-basic" label="First Date" variant="outlined" />
-        <TextField id="outlined-basic" label="Last Date" variant="outlined" />
+        <TextField id="longitude" label="Longitude" variant="outlined" />
+        <TextField id="latitude" label="Latitude" variant="outlined" />
+        <TextField id="first-date" label="First Date" variant="outlined" />
+        <TextField id="last-date" label="Last Date" variant="outlined" />
         <Button
           size="large"
           color='primary'
           variant="contained"
-          sx={{ backgroundColor: theme.palette.primary.main }}>
+          sx={{ backgroundColor: theme.palette.primary.main }}
+          onClick={handleButton}>
           Submit
         </Button>
       </Box>
