@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ResponsiveAppBar from './components/ResponsiveAppBar'
 import Comparison from './components/Comparison'
-import LoadCircle from './components/LoadCircle'
+import ClickableMap from './components/ClickableMap';
 import { TextField } from '@mui/material'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -81,6 +81,7 @@ function App() {
           />
         </Box>
       )}
+      <ClickableMap />
     </>
   )
 }
