@@ -22,3 +22,4 @@ npm install react-compare-slider
 
 Then use the command npm run dev to start the project
 
+N.B! It may take up to 20 seconds to load the satellite images! Once you click submit, the images begin to be requested from the APIs
