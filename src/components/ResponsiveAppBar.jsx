@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const pages = ['Comparison', 'Creators'];
+const pages = [];
 
 const theme = createTheme({
     palette: {

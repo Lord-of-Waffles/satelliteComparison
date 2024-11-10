@@ -15,15 +15,21 @@ const Comparison = (props) => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const responseOne = await fetch(`https://api.nasa.gov/planetary/earth/imagery?lon=${userLon}&lat=${userLat}&date=${userStartDate}&dim=0.3&api_key=0XuBhFHXY7MpKs12GIvRcEtZYUUf4A9hKmPexH6H`);
-                const blobOne = await responseOne.blob(); // Convert to Blob
-                const imageOneUrl = URL.createObjectURL(blobOne); // Create a URL for the Blob
+                const responseOne = await fetch(`https://api.nasa.gov/planetary/earth/imagery?lon=${userLon}&lat=${userLat}&date=${userStartDate}&dim=0.2&api_key=0XuBhFHXY7MpKs12GIvRcEtZYUUf4A9hKmPexH6H`);
+                if (!responseOne.ok) {
+                    throw new Error(`Image One Fetch Error: ${responseOne.status} ${responseOne.statusText}`);
+                }
+                const blobOne = await responseOne.blob();
+                const imageOneUrl = URL.createObjectURL(blobOne);
 
-                const responseTwo = await fetch(`https://api.nasa.gov/planetary/earth/imagery?lon=${userLon}&lat=${userLat}&date=${userLastDate}&dim=0.3&api_key=0XuBhFHXY7MpKs12GIvRcEtZYUUf4A9hKmPexH6H`);
-                const blobTwo = await responseTwo.blob(); // Convert to Blob
-                const imageTwoUrl = URL.createObjectURL(blobTwo); // Create a URL for the Blob
+                const responseTwo = await fetch(`https://api.nasa.gov/planetary/earth/imagery?lon=${userLon}&lat=${userLat}&date=${userLastDate}&dim=0.2&api_key=0XuBhFHXY7MpKs12GIvRcEtZYUUf4A9hKmPexH6H`);
+                if (!responseTwo.ok) {
+                    throw new Error(`Image Two Fetch Error: ${responseTwo.status} ${responseTwo.statusText}`);
+                }
+                const blobTwo = await responseTwo.blob();
+                const imageTwoUrl = URL.createObjectURL(blobTwo);
 
-                setImages({ imageOne: imageOneUrl, imageTwo: imageTwoUrl }); // Update state with URLs
+                setImages({ imageOne: imageOneUrl, imageTwo: imageTwoUrl });
 
             } catch (error) {
                 console.error('Error fetching images:', error);
@@ -32,6 +38,7 @@ const Comparison = (props) => {
 
         fetchImages();
     }, [userLon, userLat, userStartDate, userLastDate]);
+
 
 
     return (
